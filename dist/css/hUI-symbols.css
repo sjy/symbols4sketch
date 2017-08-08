@@ -1,0 +1,73 @@
+@font-face {
+  font-family: "hUI-symbols";
+  src: url('../fonts/hUI-symbols.eot');
+  src: url('../fonts/hUI-symbols.eot?#iefix') format('eot'),
+    url('../fonts/hUI-symbols.woff2') format('woff2'),
+    url('../fonts/hUI-symbols.woff') format('woff'),
+    url('../fonts/hUI-symbols.ttf') format('truetype'),
+    url('../fonts/hUI-symbols.svg#hUI-symbols') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.icon:before {
+  display: inline-block;
+  font-family: "hUI-symbols";
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-lg {
+  font-size: 1.3333333333333333em;
+  line-height: 0.75em;
+  vertical-align: -15%;
+}
+.icon-2x { font-size: 2em; }
+.icon-3x { font-size: 3em; }
+.icon-4x { font-size: 4em; }
+.icon-5x { font-size: 5em; }
+.icon-fw {
+  width: 1.2857142857142858em;
+  text-align: center;
+}
+
+.icon-arrow-left:before { content: "\EA01" }
+.icon-arrow-right:before { content: "\EA02" }
+.icon-bell:before { content: "\EA03" }
+.icon-calendar:before { content: "\EA04" }
+.icon-close:before { content: "\EA05" }
+.icon-cross:before { content: "\EA06" }
+.icon-dots:before { content: "\EA07" }
+.icon-download:before { content: "\EA08" }
+.icon-dropdown:before { content: "\EA09" }
+.icon-edit-outline:before { content: "\EA0A" }
+.icon-gear-member:before { content: "\EA0B" }
+.icon-gear:before { content: "\EA0C" }
+.icon-glyph32:before { content: "\EA0D" }
+.icon-happy:before { content: "\EA0E" }
+.icon-list-gear:before { content: "\EA0F" }
+.icon-lock:before { content: "\EA10" }
+.icon-magnifier:before { content: "\EA11" }
+.icon-member:before { content: "\EA12" }
+.icon-note:before { content: "\EA13" }
+.icon-pencil:before { content: "\EA14" }
+.icon-preview:before { content: "\EA15" }
+.icon-reply:before { content: "\EA16" }
+.icon-send:before { content: "\EA17" }
+.icon-settings-bubble:before { content: "\EA18" }
+.icon-settings-list:before { content: "\EA19" }
+.icon-sort-down:before { content: "\EA1A" }
+.icon-sort-none:before { content: "\EA1B" }
+.icon-sort-up:before { content: "\EA1C" }
+.icon-speaker:before { content: "\EA1D" }
+.icon-squares:before { content: "\EA1E" }
+.icon-star:before { content: "\EA1F" }
+.icon-stop:before { content: "\EA20" }
+.icon-transaction:before { content: "\EA21" }
+.icon-trash-x:before { content: "\EA22" }
+.icon-trash:before { content: "\EA23" }
+.icon-unhappy:before { content: "\EA24" }
+.icon-user:before { content: "\EA25" }
