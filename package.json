@@ -1,13 +1,14 @@
 {
   "name": "symbols-for-sketch",
   "version": "2.1.0",
-  "homepage": "https://github.com/cognitom/symbols-for-sketch",
+  "homepage": "https://github.com/sjy/symbols-for-sketch",
   "repository": {
     "type": "git",
-    "url": "git://github.com/cognitom/symbols-for-sketch.git"
+    "url": "git://github.com/sjy/symbols-for-sketch.git"
   },
   "description": "Symbol font templates for Sketch.app",
   "scripts": {
+    "prestart": "rimraf ./dist",
     "start": "gulp watch",
     "symbols": "gulp symbols",
     "installtool": "curl -L https://raw.githubusercontent.com/cognitom/gulp-sketch/master/install-sketchtool.sh | sudo sh"
@@ -28,6 +29,7 @@
     "gulp-iconfont": "^8.0.1",
     "gulp-rename": "^1.2.2",
     "gulp-sketch": "^1.0.3",
-    "lodash": "^4.17.2"
+    "lodash": "^4.17.2",
+    "rimraf": "^2.6.1"
   }
 }

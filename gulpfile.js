@@ -4,16 +4,22 @@ const sketch = require('gulp-sketch');
 const iconfont = require('gulp-iconfont');
 const consolidate = require('gulp-consolidate');
 const bs = require('browser-sync').create();
+const path = require('path');
 
 /**
  * Font settings
  */
 const fontName = 'hUI-symbols'; // set name of your symbol font
 const className = 'icon'; // set class name in your CSS
-const template = 'fontawesome-style'; // or 'foundation-style'
+const template = 'hui-style'; // or 'foundation-style' | 'fontawesome-style'
 
 // 导出顺序按照 sketch里的icon name字母排序
-const skethcFileName = 'symbol-font-14px-20170324.sketch'; // or 'symbol-font-16px.sketch'
+const skethcFileName = path.resolve(
+    __dirname,
+    'sketches/symbol-font-14px-latest.sketch'
+); // or 'symbol-font-16px.sketch'
+
+const distFolder = path.resolve(__dirname, './dist'); // dist path
 
 /**
  * Recommended to get consistent builds when watching files
@@ -37,40 +43,42 @@ gulp.task(
                     fontName,
                     formats: ['ttf', 'eot', 'woff', 'woff2', 'svg'],
                     timestamp,
-                    log: () => {}, // suppress unnecessary logging
+                    log: info => {
+                        console.log(info);
+                    }, // suppress unnecessary logging
                 })
             )
             .on('glyphs', glyphs => {
                 const options = {
                     className,
                     fontName,
-                    fontPath: '../fonts/', // set path to font (from your CSS file if relative)
+                    fontPath: './fonts/', // set path to font (from your CSS file if relative)
                     glyphs: glyphs.map(mapGlyphs),
                 };
                 gulp
                     .src(`templates/${template}.css`)
                     .pipe(consolidate('lodash', options))
                     .pipe(rename({basename: fontName}))
-                    .pipe(gulp.dest('dist/css/')); // set path to export your CSS
+                    .pipe(gulp.dest(distFolder)); // set path to export your CSS
 
                 // if you don't need sample.html, remove next 4 lines
                 gulp
                     .src(`templates/${template}.html`)
                     .pipe(consolidate('lodash', options))
                     .pipe(rename({basename: 'preview'}))
-                    .pipe(gulp.dest('dist/')); // set path to export your sample HTML
+                    .pipe(gulp.dest(distFolder)); // set path to export your sample HTML
             })
-            .pipe(gulp.dest('dist/fonts/')) // set path to export your fonts
+            .pipe(gulp.dest(distFolder + '/fonts/')) // set path to export your fonts
 );
 
 gulp.task('watch', ['symbols'], () => {
     bs.init({
-        files: 'dist/preview.html',
-        server: 'dist/',
+        files: distFolder + '/preview.html',
+        server: distFolder,
         startPath: '/preview.html',
         middleware: cacheControl,
     });
-    gulp.watch('*.sketch', ['symbols']);
+    gulp.watch('./sketches/*.sketch', ['symbols']);
 });
 
 /**
