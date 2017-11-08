@@ -19,7 +19,7 @@ const skethcFileName = path.resolve(
     'sketches/symbol-font-14px-latest.sketch'
 ); // or 'symbol-font-16px.sketch'
 
-const distFolder = path.resolve(__dirname, './dist'); // dist path
+const distFolder = path.resolve(__dirname, '../hUI-core/src/components/icon'); // dist path
 
 /**
  * Recommended to get consistent builds when watching files
