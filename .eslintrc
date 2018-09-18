@@ -1,0 +1,13 @@
+{
+  "root": true,
+  "extends": "airbnb-base",
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest": true
+  },
+  "rules": {
+    "semi": ["error", "never"],
+    "no-plusplus": "off"
+  }
+}

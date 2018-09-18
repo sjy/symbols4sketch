@@ -6,25 +6,21 @@ const consolidate = require('gulp-consolidate');
 const bs = require('browser-sync').create();
 const path = require('path');
 
+const parseArgv = require('./util/parseArgv')
+const argv = parseArgv(process.argv)
+
 /**
  * Font settings
  */
-const fontName = 'hUI-symbols'; // set name of your symbol font
-const className = 'icon'; // set class name in your CSS
-const template = 'hui-style'; // or 'foundation-style' | 'fontawesome-style'
+const fontName = argv.fontName
+const className = argv.className
+const template = 'style'
 
-// 导出顺序按照 sketch里的icon name字母排序
-const skethcFileName = path.resolve(
-  __dirname,
-  'sketches/symbol-font-14px-latest.sketch'
-); // or 'symbol-font-16px.sketch'
+// TODO: 导出顺序按照 sketch 里的icon name字母排序
+const skethcFileName = argv.source || path.resolve( __dirname, './sketches/symbol-font-16px.sketch')
 
-const distFolder = path.resolve(__dirname, '../hUI-core/src/components/icon'); // dist path
+const distFolder = path.resolve(__dirname, argv.dist)
 
-/**
- * Recommended to get consistent builds when watching files
- * See https://github.com/nfroidure/gulp-iconfont
- */
 const timestamp = Math.round(Date.now() / 1000);
 
 gulp.task(
@@ -41,6 +37,7 @@ gulp.task(
   .pipe(
     iconfont({
       fontName,
+      startUnicode: 0xF000,
       formats: ['ttf', 'eot', 'woff', 'woff2', 'svg'],
       timestamp,
       log: info => {
@@ -55,6 +52,7 @@ gulp.task(
       fontPath: './fonts/', // set path to font (from your CSS file if relative)
       glyphs: glyphs.map(mapGlyphs),
     };
+
     gulp
       .src(`templates/${template}.css`)
       .pipe(consolidate('lodash', options))
@@ -82,7 +80,7 @@ gulp.task('watch', ['symbols'], () => {
     startPath: '/preview.html',
     middleware: cacheControl,
   });
-  gulp.watch('./sketches/*.sketch', ['symbols']);
+  gulp.watch(skethcFileName, ['symbols']);
 });
 
 /**

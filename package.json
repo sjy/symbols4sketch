@@ -1,35 +1,48 @@
 {
-  "name": "symbols-for-sketch",
-  "version": "2.1.0",
+  "name": "symbols4sketch",
+  "version": "0.0.1",
+  "private": false,
   "homepage": "https://github.com/sjy/symbols-for-sketch",
   "repository": {
     "type": "git",
     "url": "git://github.com/sjy/symbols-for-sketch.git"
   },
-  "description": "Symbol font templates for Sketch.app",
+  "bin": {
+    "s4s": "./bin"
+  },
+  "files": [
+    "sketches",
+    "templates",
+    "variants",
+    "util",
+    "bin.js",
+    "gulpfile.js"
+  ],
+  "description": "A cli tool helping convert sketch to icon fonts",
   "scripts": {
-    "prestart": "rimraf ./dist",
     "start": "gulp watch",
     "symbols": "gulp symbols",
     "installtool": "curl -L https://raw.githubusercontent.com/cognitom/gulp-sketch/master/install-sketchtool.sh | sudo sh"
   },
-  "private": true,
   "keywords": [
     "symbol font",
     "icon font",
     "sketch",
     "template"
   ],
-  "author": "Tsutomu Kawamura <tsutomu@librize.com>",
+  "engines": {
+    "env": ">=4"
+  },
+  "author": "sjy",
   "license": "MIT",
-  "devDependencies": {
+  "dependencies": {
     "browser-sync": "^2.18.2",
+    "commander": "^2.18.0",
     "gulp": "^3.9.1",
     "gulp-consolidate": "^0.2.0",
     "gulp-iconfont": "^8.0.1",
     "gulp-rename": "^1.2.2",
     "gulp-sketch": "^1.0.3",
-    "lodash": "^4.17.2",
-    "rimraf": "^2.6.1"
+    "lodash": "^4.17.2"
   }
 }
