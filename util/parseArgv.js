@@ -1,9 +1,9 @@
 module.exports = (argList => {
   const arg = {}
-  let opt, thisOpt, curOpt
+  let curOpt = null
   for (let i = 0; i < argList.length; i++) {
-    thisOpt = argList[i].trim()
-    opt = thisOpt.replace(/^\-+/, '')
+    const thisOpt = argList[i].trim()
+    const opt = thisOpt.replace(/^-+/, '')
 
     if (opt === thisOpt) {
       // argument value
@@ -14,9 +14,7 @@ module.exports = (argList => {
       curOpt = opt
       arg[curOpt] = true
     }
-    // console.log({ opt, thisOpt, curOpt })
   }
 
   return arg
-
 })

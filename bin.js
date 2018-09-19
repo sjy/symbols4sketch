@@ -22,7 +22,13 @@ const {
   className,
 } = program
 
-const normalizeArgs = [watch ? 'watch' : 'symbols', '--dist', program.dist, '--source', source || ' ', '--fontName', fontName, '--className', className]
+const normalizeArgs = [
+  watch ? 'watch' : 'symbols',
+  '--dist', dist,
+  '--source', source || ' ',
+  '--fontName', fontName,
+  '--className', className,
+]
 
 const ps = exec('./node_modules/.bin/gulp', normalizeArgs)
 
@@ -31,7 +37,8 @@ ps.stdout.on('data', (data) => {
 })
 
 ps.stderr.on('data', (data) => {
+  // eslint-disable-next-line
   console.error({
-    err: data
+    err: data,
   })
 })

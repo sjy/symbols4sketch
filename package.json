@@ -22,6 +22,7 @@
   "scripts": {
     "start": "gulp watch",
     "symbols": "gulp symbols",
+    "lint": "eslint .",
     "installtool": "curl -L https://raw.githubusercontent.com/cognitom/gulp-sketch/master/install-sketchtool.sh | sudo sh"
   },
   "keywords": [
@@ -44,5 +45,10 @@
     "gulp-rename": "^1.2.2",
     "gulp-sketch": "^1.0.3",
     "lodash": "^4.17.2"
+  },
+  "devDependencies": {
+    "eslint": "^5.6.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0"
   }
 }

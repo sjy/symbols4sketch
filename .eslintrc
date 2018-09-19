@@ -8,6 +8,17 @@
   },
   "rules": {
     "semi": ["error", "never"],
-    "no-plusplus": "off"
+    "no-plusplus": "off",
+    "one-var": "off",
+    "object-curly-newline": "off",
+    "implicit-arrow-linebreak": "off",
+    "arrow-parens": "off",
+    "comma-dangle": ["error", {
+      "arrays": "always-multiline",
+      "objects": "always-multiline",
+      "imports": "never",
+      "exports": "never",
+      "functions": "ignore"
+    }]
   }
 }
