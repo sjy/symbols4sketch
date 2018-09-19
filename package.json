@@ -1,6 +1,6 @@
 {
   "name": "symbols4sketch",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": false,
   "homepage": "https://github.com/sjy/symbols-for-sketch",
   "repository": {
@@ -32,7 +32,7 @@
     "template"
   ],
   "engines": {
-    "env": ">=4"
+    "node": ">=4"
   },
   "author": "sjy",
   "license": "MIT",
