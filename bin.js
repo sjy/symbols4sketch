@@ -24,6 +24,7 @@ const {
 } = program
 
 const normalizeArgs = [
+  'gulpfile', path.resolve(__dirname, 'gulpfile.js'),
   watch ? 'watch' : 'symbols',
   '--dist', dist,
   '--source', source || ' ',
