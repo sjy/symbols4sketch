@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const exec = require('child_process').spawn
+const path = require('path')
 const program = require('commander')
 const pkgJson = require('./package.json')
 
@@ -30,7 +31,7 @@ const normalizeArgs = [
   '--className', className,
 ]
 
-const ps = exec('./node_modules/.bin/gulp', normalizeArgs)
+const ps = exec(path.resolve(__dirname, 'node_modules/.bin/gulp'), normalizeArgs)
 
 ps.stdout.on('data', (data) => {
   process.stdout.write(data)
