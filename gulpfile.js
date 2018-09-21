@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const gulp = require('gulp')
 const rename = require('gulp-rename')
 const sketch = require('gulp-sketch')
@@ -5,6 +6,7 @@ const iconfont = require('gulp-iconfont')
 const consolidate = require('gulp-consolidate')
 const bs = require('browser-sync').create()
 const path = require('path')
+const fs = require('fs')
 
 const parseArgv = require('./util/parseArgv')
 
@@ -18,9 +20,15 @@ const {
 const template = 'style'
 
 // TODO: 导出顺序按照 sketch 里的icon name字母排序
+// check existance
 const skethcFileName = source || path.resolve(__dirname, './sketches/symbol-font-16px.sketch')
+if (!fs.existsSync(skethcFileName)) {
+  // throw new Error('Invalid sketch file path', skethcFileName)
+  console.error('Invalid sketch file path', skethcFileName)
+  process.exit(-1)
+}
 
-const distFolder = path.resolve(__dirname, dist)
+const distFolder = dist
 
 const timestamp = Math.round(Date.now() / 1000)
 
@@ -57,7 +65,6 @@ gulp.task('symbols', () => gulp
       formats: ['ttf', 'eot', 'woff', 'woff2', 'svg'],
       timestamp,
       log: info => {
-        // eslint-disable-next-line
         console.log(info)
       },
     })

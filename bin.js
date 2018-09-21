@@ -24,6 +24,8 @@ const {
 } = program
 
 const normalizeArgs = [
+  '--color',
+  '--cwd', '.',
   '--gulpfile', path.resolve(__dirname, 'gulpfile.js'),
   watch ? 'watch' : 'symbols',
   '--dist', dist,
@@ -39,8 +41,5 @@ ps.stdout.on('data', (data) => {
 })
 
 ps.stderr.on('data', (data) => {
-  // eslint-disable-next-line
-  console.error({
-    err: data,
-  })
+  process.stderr.write(data)
 })
