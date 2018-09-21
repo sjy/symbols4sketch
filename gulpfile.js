@@ -17,7 +17,7 @@ const {
   dist,
 } = parseArgv(process.argv)
 
-const template = path.relative(__dirname, 'templates')
+const template = path.resolve(__dirname, 'templates')
 
 // TODO: 导出顺序按照 sketch 里的icon name字母排序
 // check existance
