@@ -17,11 +17,11 @@ const {
   dist,
 } = parseArgv(process.argv)
 
-const template = 'style'
+const template = path.relative(__dirname, 'templates')
 
 // TODO: 导出顺序按照 sketch 里的icon name字母排序
 // check existance
-const skethcFileName = source || path.resolve(__dirname, './sketches/symbol-font-16px.sketch')
+const skethcFileName = source || path.resolve(__dirname, 'sketches/symbol-font-16px.sketch')
 if (!fs.existsSync(skethcFileName)) {
   // throw new Error('Invalid sketch file path', skethcFileName)
   console.error('Invalid sketch file path', skethcFileName)
@@ -78,7 +78,7 @@ gulp.task('symbols', () => gulp
     }
 
     gulp
-      .src(`templates/${template}.css`)
+      .src(`${template}/style.css`)
       .pipe(consolidate('lodash', options))
       .pipe(
         rename({
@@ -87,9 +87,8 @@ gulp.task('symbols', () => gulp
       )
       .pipe(gulp.dest(distFolder)) // set path to export your CSS
 
-    // if you don't need sample.html, remove next 4 lines
     gulp
-      .src(`templates/${template}.html`)
+      .src(`${template}/style.html`)
       .pipe(consolidate('lodash', options))
       .pipe(
         rename({
