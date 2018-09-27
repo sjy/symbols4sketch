@@ -32,12 +32,14 @@ yarn global add symbols4sketch
 ``` bash
 s4s --help
 Usage: s4s [options]
+
 Options:
-  -w, --watch                  watch mode
+
+  --no-preview                 do not preview generated icons
   -s, --source <path>          source sketch file path
   -d, --dist [path]            dist folder path (default: ./dist)
   -f, --fontName [fontname]    name of icon font (default: symbols)
-  -c, --className [classname]  class name of icon elemen (default:icon)
+  -c, --className [classname]  class name of icon elemen (default: icon)
   -V, --version                output the version number
   -h, --help                   output usage information
 ```

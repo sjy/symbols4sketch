@@ -6,7 +6,7 @@ const program = require('commander')
 const pkgJson = require('./package.json')
 
 program
-  .option('-w, --watch', 'watch mode')
+  .option('--no-preview', 'do not preview generated icons')
   .option('-s, --source <path>', 'source sketch file path')
   .option('-d, --dist [path]', 'dist folder path', './dist')
   .option('-f, --fontName [fontname]', 'name of icon font', 'symbols')
@@ -16,7 +16,7 @@ program
 program.parse(process.argv)
 
 const {
-  watch,
+  preview,
   source,
   dist,
   fontName,
@@ -27,7 +27,7 @@ const normalizeArgs = [
   '--color',
   '--cwd', '.',
   '--gulpfile', path.resolve(__dirname, 'gulpfile.js'),
-  watch ? 'watch' : 'symbols',
+  preview ? 'watch' : 'symbols',
   '--dist', dist,
   '--source', source || ' ',
   '--fontName', fontName,
