@@ -15,7 +15,8 @@
     "variants",
     "util",
     "bin.js",
-    "gulpfile.js"
+    "gulpfile.js",
+    "sketches"
   ],
   "description": "A cli tool helping convert sketch to icon fonts",
   "scripts": {
@@ -48,6 +49,7 @@
   "devDependencies": {
     "eslint": "^5.6.0",
     "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.14.0"
+    "eslint-plugin-import": "^2.14.0",
+    "gulp-inline-fonts": "^1.1.0"
   }
 }

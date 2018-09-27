@@ -4,6 +4,7 @@ const rename = require('gulp-rename')
 const sketch = require('gulp-sketch')
 const iconfont = require('gulp-iconfont')
 const consolidate = require('gulp-consolidate')
+const inlineFonts = require('gulp-inline-fonts')
 const bs = require('browser-sync').create()
 const path = require('path')
 const fs = require('fs')
@@ -21,7 +22,7 @@ const template = path.resolve(__dirname, 'templates')
 
 // TODO: 导出顺序按照 sketch 里的icon name字母排序
 // check existance
-const skethcFileName = source || path.resolve(__dirname, 'sketches/symbol-font-16px.sketch')
+const skethcFileName = source || path.resolve(__dirname, 'sketches/symbol-font-14px.sketch')
 if (!fs.existsSync(skethcFileName)) {
   // throw new Error('Invalid sketch file path', skethcFileName)
   console.error('Invalid sketch file path', skethcFileName)
@@ -97,7 +98,9 @@ gulp.task('symbols', () => gulp
       )
       .pipe(gulp.dest(distFolder)) // set path to export your sample HTML
   })
-  .pipe(gulp.dest(`${distFolder}/fonts/`)))
+  .pipe(gulp.dest(`${distFolder}/fonts/`))
+  .pipe(inlineFonts({ name: fontName, formats: ['ttf'] }))
+  .pipe(gulp.dest(distFolder)))
 
 gulp.task('watch', ['symbols'], () => {
   bs.init({
