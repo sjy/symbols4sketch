@@ -100,7 +100,7 @@ gulp.task('symbols', () => gulp
   })
   .pipe(gulp.dest(`${distFolder}/fonts/`))
   .pipe(inlineFonts({ name: fontName, formats: ['ttf'] }))
-  .pipe(gulp.dest(distFolder)))
+  .pipe(gulp.dest(`${distFolder}/base64`)))
 
 gulp.task('watch', ['symbols'], () => {
   bs.init({

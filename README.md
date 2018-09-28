@@ -50,6 +50,3 @@ Options:
 
 ## Enjoy It 🎉
 
-## TODO
-
-- [] Save files built by watching mode to tmp path by default
