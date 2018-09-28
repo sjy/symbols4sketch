@@ -8,7 +8,8 @@
   <link href="<%= fontName %>.css" rel="stylesheet">
   <style>
     body {
-      font-family: Gill Sans;
+      font-family: "<%= fontName %>";
+      ;
       text-align: center;
       background: #f7f7f7
     }
@@ -26,7 +27,6 @@
       display: inline-block;
       margin: .3em .2em;
       width: 5em;
-      height: 3.5em;
       background: #fff;
       border-radius: .5em;
       position: relative
@@ -59,17 +59,29 @@
       font-family: monospace
     }
 
-    .<%=className %>:before {
-      display: inline-block;
-      font-family: "<%= fontName %>";
-      font-style: normal;
-      font-weight: normal;
-      line-height: 1;
-      font-size: 2em;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+    .<%=className %> {
+      display: block;
+      width: 2em;
+      height: 2em;
+      margin: 0 auto;
     }
 
+    <% _.each(glyphs, function(glyph) {
+      %> .<%=glyph.name %>::before {
+        content: "\<%= glyph.codepoint.toString(16).toUpperCase() %>";
+        display: inline-block;
+        font-style: normal;
+        font-weight: normal;
+        line-height: 1;
+        font-size: 2em;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      <%
+    }
+
+    );
+    %>
   </style>
 </head>
 
@@ -79,15 +91,18 @@
   </h1>
   <ul class="glyph">
     <% _.each(glyphs, function(glyph) { %>
-    <li>
-      <i class="<%= className %> <%= className %>-<%= glyph.name %> <%= className %>"><span>
-          <%= String.fromCodePoint(glyph.codepoint) %></span></i>
-      <span class="glyph-name">
-        <%= glyph.name %></span>
-      <span class="glyph-codepoint">
-        <%= glyph.codepoint.toString(16).toUpperCase() %></span>
-    </li>
-    <% }); %>
+      <li>
+        <i class="<%= className %> <%= glyph.name %>"></i>
+        <!-- 下面这种方式也可以 -->
+        <!-- <span> <%= String.fromCodePoint(glyph.codepoint) %> </span> -->
+        <span class="glyph-name">
+          <%= glyph.name %>
+        </span>
+        <span class="glyph-codepoint">
+          <%= glyph.codepoint.toString(16).toUpperCase() %>
+        </span>
+      </li>
+      <% }); %>
   </ul>
 </body>
 
