@@ -9,6 +9,8 @@
   <br>
 </p>
 
+![demo](./demo.gif)
+
 ## Featurs
 
 - Support convert from templated based sketch file which contains various icon.
